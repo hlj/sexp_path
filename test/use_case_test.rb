@@ -13,7 +13,7 @@ class UseCaseTest < Test::Unit::TestCase
   def setup
     path = File.dirname(__FILE__) + '/sample.rb'
     sample = File.read(path)
-    @sexp = Sexp.from_array(RubyParser.new.parse(sample, path))
+    @sexp = Sexp.from_array(Ruby19Parser.new.parse(sample, path))
   end
   
   def test_finding_methods
@@ -31,7 +31,7 @@ class UseCaseTest < Test::Unit::TestCase
   end
   
   def test_finding_empty_test_methods
-    empty_body = Q?{ s(:scope, s(:block, s(:nil))) }
+    empty_body = Q?{ s(:nil) }
     res = @sexp / Q?{ s(:defn, m(/^test_.+/) % 'name', _, empty_body ) }
     assert_equal 1, res.length
     assert_equal :test_b, res.first['name']

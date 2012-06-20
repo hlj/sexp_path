@@ -1,6 +1,6 @@
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 
 begin
   require 'jeweler'
@@ -11,16 +11,16 @@ begin
     s.description = <<-DESC
       Allows you to do example based pattern matching and queries against S Expressions (sexp).
     DESC
-    s.email = "netghost@gmail.com"
-    s.homepage = "http://github.com/adamsanderson/sexp_path"
-    s.authors = ["Adam Sanderson"]
+    s.email = "hlj8080@gmail.com"
+    s.homepage = "https://github.com/hlj/sexp_path"
+    s.authors = ["Adam Sanderson","Huang lijun"]
     s.files = FileList["[A-Z]*", "{bin,lib,test,examples}/**/*"]
     
-    s.add_dependency 'sexp_processor', '~> 3.0'
+    s.add_dependency 'sexp_processor', '> 3.0'
     
     # Testing
     s.test_files = FileList["test/**/*_test.rb"]
-    s.add_development_dependency 'ruby_parser', '~> 2.0'
+    s.add_development_dependency 'ruby_parser', '~> 3.0'
   end
 
 rescue LoadError
